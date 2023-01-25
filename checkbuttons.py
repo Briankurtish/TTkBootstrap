@@ -26,4 +26,12 @@ my_check = tb.Checkbutton(
 my_check.pack(pady=10)
 
 
+# ToolButton
+
+var2 = IntVar()
+
+my_check2 = tb.Checkbutton(text="ToolButton!", bootstyle=(
+    "danger, toolbutton"), variable=var2, offvalue=0, onvalue=1, command=checker)
+my_check2.pack(pady=10)
+
 root.mainloop()
