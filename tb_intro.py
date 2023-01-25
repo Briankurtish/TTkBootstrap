@@ -13,6 +13,8 @@ my_label = tb.Label(text="Hello World", font=(
     "Helvetica", 28), bootstyle="danger")
 my_label.pack(pady=50)
 
-my_button = tb.Button()
+my_button = tb.Button(
+    text="Click Me!", bootstyle="success, outline", command=())
+my_button.pack(pady=20)
 
 root.mainloop()
