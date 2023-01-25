@@ -50,4 +50,13 @@ my_check4 = tb.Checkbutton(text="Round Toggle Button", bootstyle=(
     "info, round-toggle"), variable=var4, offvalue=0, onvalue=1, command=checker)
 my_check4.pack(pady=10)
 
+
+# Square Toggle Button
+
+var5 = IntVar()
+
+my_check5 = tb.Checkbutton(text="Square Toggle Button", bootstyle=(
+    "primary, square-toggle"), variable=var5, offvalue=0, onvalue=1, command=checker)
+my_check5.pack(pady=10)
+
 root.mainloop()
