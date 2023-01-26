@@ -19,11 +19,12 @@ def stopper():
 def increment():
     # Increment Guaue
     my_gauue.step(10)
+    my_label.config(text=f"Position: {my_gauue.variable.get()}")
 
 
 # Create Floodgauge
 my_gauue = tb.Floodgauge(root, bootstyle="success",
-                         font=("Helvetica", 18), mask="Pos: {}%", maximum=100, orient="horizontal", value=10)
+                         font=("Helvetica", 18), mask="Pos: {}%", maximum=100, orient="horizontal", value=0, mode="determinate")
 my_gauue.pack(pady=50, fill=X, padx=20)
 
 # Create Start Button
@@ -41,5 +42,10 @@ inc_button = tb.Button(root, text="Increment",
                        bootstyle="warning outline", command=increment)
 inc_button.pack(pady=20)
 
+
+# Create a label
+
+my_label = tb.Label(root, text="Position: ")
+my_label.pack(pady=20)
 
 root.mainloop()
