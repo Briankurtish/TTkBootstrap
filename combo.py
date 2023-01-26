@@ -6,6 +6,11 @@ root = tb.Window(themename="superhero")
 root.title("ComboBox")
 root.geometry("500x350")
 
+
+def clicker():
+    my_label.config(text=f"You clicked {my_combo.get()}!")
+
+
 my_label = tb.Label(root, text="Hello World", font=('Helvetica', 18))
 my_label.pack(pady=30)
 
@@ -19,5 +24,10 @@ my_combo.pack(pady=20)
 
 # set combo default
 my_combo.current(0)
+
+# Create a Button
+my_button = tb.Button(root, text="Click Me!",
+                      command=clicker, bootstyle="danger")
+my_button.pack(pady=20)
 
 root.mainloop()
