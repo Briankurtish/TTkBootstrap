@@ -7,6 +7,10 @@ root.title("Login")
 root.geometry('700x700')
 
 
+# Style
+my_style = tb.Style()
+my_style.configure('primary-outline.TButton', font=("Helvetica", 14))
+
 # Create Top Label
 
 title = tb.Label(root, text="Welcome Cipher!", font=(
@@ -30,6 +34,13 @@ password_label = tb.Label(
 password_label.grid(row=3, column=2, padx=50)
 password_entry = tb.Entry(root, bootstyle="success", show="*")
 password_entry.grid(row=3, column=3, pady=30)
+
+
+# Create login Button
+
+login_btn = tb.Button(
+    text="Login Now!", style='primary.TButton')
+login_btn.grid(row=4, column=3)
 
 
 root.mainloop()
