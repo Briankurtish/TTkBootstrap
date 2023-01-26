@@ -7,6 +7,13 @@ root = tb.Window(themename="superhero")
 root.title("Student registration System")
 root.geometry("500x600")
 
+student_data = []
+
+
+def add_student_data(stud_id, stud_name, stud_email, stud_courses):
+    student_data.append([stud_id, stud_name, stud_email, stud_courses])
+
+
 head_frame = tb.Frame(root)
 
 # Heading label
