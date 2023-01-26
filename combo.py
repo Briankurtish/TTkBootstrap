@@ -13,5 +13,8 @@ my_label.pack(pady=30)
 days = ['Monday', 'Tuesday', 'Wednesday',
         'Thursday', 'Friday', 'Saturday', 'Sunday']
 
+# Create Combobox
+my_combo = tb.Combobox(root, bootstyle="success", values=days)
+my_combo.pack(pady=20)
 
 root.mainloop()
