@@ -17,4 +17,7 @@ days = ['Monday', 'Tuesday', 'Wednesday',
 my_combo = tb.Combobox(root, bootstyle="success", values=days)
 my_combo.pack(pady=20)
 
+# set combo default
+my_combo.current(0)
+
 root.mainloop()
