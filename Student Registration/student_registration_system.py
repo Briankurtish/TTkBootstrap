@@ -93,4 +93,10 @@ search_bar_frame.pack_propagate(False)
 search_bar_frame.configure(width=400, height=50)
 
 
+record_frame = tb.Frame(root, bootstyle="success")
+record_frame.pack()
+record_frame.pack_propagate(False)
+record_frame.configure(width=400, height=200)
+
+
 root.mainloop()
