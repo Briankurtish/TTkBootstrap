@@ -14,7 +14,7 @@ def speak():
 
 # Create Entry Widget
 my_entry = tb.Entry(root, bootstyle="warning", font=(
-    "Helevtica", 18), foreground="blue")
+    "Helevtica", 18), foreground="blue", show="*")
 my_entry.pack(pady=20)
 
 # Create Button
