@@ -100,7 +100,7 @@ record_lb = tb.Label(record_frame, text="Select Record or Delete or Update",
                      bootstyle="warning", font=("Bold", 13))
 record_lb.pack(fill=tb.X)
 
-record_table = ttk.Treeview(record_frame)
+record_table = tb.Treeview(record_frame, bootstyle="success")
 record_table.pack(fill=tb.X, pady=5)
 
 record_table["column"] = ['Id', "Name", "Email", "Courses"]
@@ -108,8 +108,8 @@ record_table.column('#0', anchor=tb.W, width=0, stretch=tb.NO)
 
 record_table.column('Id', anchor=tb.W, width=50)
 record_table.column('Name', anchor=tb.W, width=100)
-record_table.column('Email', anchor=tb.W, width=100)
-record_table.column('Courses', anchor=tb.W, width=200)
+record_table.column('Email', anchor=tb.W, width=120)
+record_table.column('Courses', anchor=tb.W, width=160)
 
 record_table.heading("Id", text="Id", anchor=tb.W)
 record_table.heading("Name", text="Name", anchor=tb.W)
