@@ -55,6 +55,11 @@ register_btn = tb.Button(head_frame, text='Register',
                          bootstyle="success outline")
 register_btn.place(x=0, y=250)
 
+# Update Button
+register_btn = tb.Button(head_frame, text='Update',
+                         bootstyle="primary outline")
+register_btn.place(x=100, y=250)
+
 
 head_frame.pack(pady=10)
 # When you use pack_propagate you can resize the Frame like a container and give it a width and height
