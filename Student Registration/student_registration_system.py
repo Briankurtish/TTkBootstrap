@@ -10,8 +10,19 @@ root.geometry("500x600")
 student_data = []
 
 
+def load_student_data():
+    for item in record_table.get_children():
+        record_table.delete(item)
+
+        for r in range(len(student_data)):
+            record_table.insert(parent='', index='end',
+                                text='', iid=r, values=student_data[r])
+
+
 def add_student_data(stud_id, stud_name, stud_email, stud_courses):
     student_data.append([stud_id, stud_name, stud_email, stud_courses])
+
+    load_student_data()
 
 
 head_frame = tb.Frame(root)
