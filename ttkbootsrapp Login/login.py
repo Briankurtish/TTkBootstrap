@@ -18,11 +18,18 @@ label2 = tb.Label(
 label2.grid(row=1, column=3)
 
 # Create email entry widgets
-label3 = tb.Label(
+email_label = tb.Label(
     root, text="Enter Email:", font=("Heveltica", 9))
-label3.grid(row=2, column=2, padx=50)
-email_entry = tb.Entry(root, bootstyle="success", textvariable="Enter Email")
+email_label.grid(row=2, column=2, padx=50)
+email_entry = tb.Entry(root, bootstyle="success")
 email_entry.grid(row=2, column=3, pady=30)
+
+# Create Password entry widgets
+password_label = tb.Label(
+    root, text="Enter Password:", font=("Heveltica", 9))
+password_label.grid(row=3, column=2, padx=50)
+password_entry = tb.Entry(root, bootstyle="success", show="*")
+password_entry.grid(row=3, column=3, pady=30)
 
 
 root.mainloop()
