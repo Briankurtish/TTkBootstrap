@@ -9,6 +9,8 @@ root.geometry("500x350")
 
 
 # Create Entry Widget
+my_entry = tb.Entry(root)
+my_entry.pack(pady=20)
 
 # Create Button
 
