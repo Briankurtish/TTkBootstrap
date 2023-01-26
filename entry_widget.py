@@ -18,6 +18,7 @@ my_button = tb.Button(root, text="Click Me!",
 my_button.pack(pady=20)
 
 # Create Label
-
+my_label = tb.Label(root, text="")
+my_label.pack(pady=20)
 
 root.mainloop()
