@@ -9,5 +9,9 @@ root.geometry("500x350")
 my_label = tb.Label(root, text="Hello World", font=('Helvetica', 18))
 my_label.pack(pady=30)
 
+# Create DropDown Options
+days = ['Monday', 'Tuesday', 'Wednesday',
+        'Thursday', 'Friday', 'Saturday', 'Sunday']
+
 
 root.mainloop()
