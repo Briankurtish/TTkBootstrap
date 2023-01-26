@@ -77,4 +77,16 @@ head_frame.pack_propagate(False)
 head_frame.config(width=400, height=300)
 
 
+# Search Bar Frame
+search_bar_frame = tb.Frame(root)
+
+search_lb = tb.Label(
+    search_bar_frame, text='Search Student By Id:', font=("Bold", 10))
+search_lb.pack(anchor=tb.W)
+
+search_bar_frame.pack(pady=0)
+search_bar_frame.pack_propagate(False)
+search_bar_frame.configure(width=400, height=50)
+
+
 root.mainloop()
