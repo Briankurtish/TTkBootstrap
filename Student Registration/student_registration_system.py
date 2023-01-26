@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.ttk as ttk
 import ttkbootstrap as tb
 
 
@@ -93,8 +94,13 @@ search_bar_frame.pack_propagate(False)
 search_bar_frame.configure(width=400, height=50)
 
 
-record_frame = tb.Frame(root, bootstyle="success")
-record_frame.pack()
+record_frame = tb.Frame(root)
+
+record_lb = tb.Label(record_frame, text="Select Record or Delete or Update",
+                     bootstyle="warning", font=("Bold", 13))
+record_lb.pack(fill=tb.X)
+
+record_frame.pack(pady=10)
 record_frame.pack_propagate(False)
 record_frame.configure(width=400, height=200)
 
