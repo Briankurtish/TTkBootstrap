@@ -65,6 +65,11 @@ delete_btn = tb.Button(head_frame, text='Delete',
                        bootstyle="danger outline")
 delete_btn.place(x=200, y=250)
 
+# Clear Button
+clear_btn = tb.Button(head_frame, text='Clear',
+                      bootstyle="info outline")
+clear_btn.place(x=300, y=250)
+
 
 head_frame.pack(pady=10)
 # When you use pack_propagate you can resize the Frame like a container and give it a width and height
