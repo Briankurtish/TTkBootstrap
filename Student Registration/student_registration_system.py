@@ -71,7 +71,11 @@ student_courses.place(x=130, y=200, width=180)
 
 # Register Button
 register_btn = tb.Button(head_frame, text='Register',
-                         bootstyle="success outline")
+                         bootstyle="success outline", command=lambda:
+                             add_student_data(student_id.get(),
+                                              student_name.get(),
+                                              student_email.get(),
+                                              student_courses.get()))
 register_btn.place(x=0, y=250)
 
 # Update Button
