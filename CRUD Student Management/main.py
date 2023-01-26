@@ -17,7 +17,7 @@ mt_tree = ttk.Treeview(root)
 
 # Functions
 
-# Gui
+# Labels
 label = tb.Label(root, text="Student Registration System",
                  font=("Arial Bold", 30))
 label.grid(row=0, column=0, columnspan=8, rowspan=2, padx=50, pady=40)
@@ -36,6 +36,23 @@ addressLabel.grid(row=6, column=0, columnspan=1, padx=50, pady=5)
 
 phoneLabel = tb.Label(root, text="Phone", font=("Arial", 15))
 phoneLabel.grid(row=7, column=0, columnspan=1, padx=50, pady=5)
+
+
+# entries
+studidEntry = tb.Entry(root, width=55)
+studidEntry.grid(row=3, column=1, columnspan=4, padx=5, pady=0)
+
+fnameEntry = tb.Entry(root, width=55)
+fnameEntry.grid(row=4, column=1, columnspan=4, padx=5, pady=0)
+
+lnameEntry = tb.Entry(root, width=55)
+lnameEntry.grid(row=5, column=1, columnspan=4, padx=5, pady=0)
+
+addressEntry = tb.Entry(root, width=55)
+addressEntry.grid(row=6, column=1, columnspan=4, padx=5, pady=0)
+
+phoneEntry = tb.Entry(root, width=55)
+phoneEntry.grid(row=7, column=1, columnspan=4, padx=5, pady=0)
 
 
 root.mainloop()
