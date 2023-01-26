@@ -30,6 +30,17 @@ student_name_lb.place(x=0, y=100)
 student_name = tb.Entry(head_frame, font=("Bold", 10), bootstyle="info")
 student_name.place(x=120, y=100, width=180)
 
+
+# Student Email
+student_email_lb = tb.Label(
+    head_frame, text="Student Email: ", font=("Bold", 10))
+student_email_lb.place(x=0, y=150)
+
+# Student Email entry
+student_email = tb.Entry(head_frame, font=("Bold", 10), bootstyle="info")
+student_email.place(x=120, y=150, width=180)
+
+
 head_frame.pack(pady=10)
 # When you use pack_propagate you can resize the Frame like a container and give it a width and height
 head_frame.pack_propagate(False)
