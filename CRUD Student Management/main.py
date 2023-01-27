@@ -70,6 +70,9 @@ def add():
     refreshTable()
 
 
+# This functions deletes everything from the database
+
+
 def reset():
     decision = messagebox.askquestion("Warning!", "Delete all Data?")
     if decision != 'yes':
@@ -84,6 +87,31 @@ def reset():
         except:
             messagebox.showinfo("Error", "Sorry an error occured")
             return
+
+    refreshTable()
+
+
+# This functions deletes everything from the database
+
+
+def delete():
+    decision = messagebox.askquestion("Warning!", "Delete the selected data?")
+    if decision != 'yes':
+        return
+    else:
+        selected_item = record_table.selection()[0]
+        deleteData = str(record_table.item(selected_item)['values'][0])
+        try:
+            conn = connection()
+            cursor = conn.cursor()
+            cursor.execute(
+                "DELETE FROM students WHERE STUDID='"+str(deleteData)+"'")
+            conn.commit()
+            conn.close()
+        except:
+            messagebox.showinfo("Error", "Sorry an error occured")
+            return
+
     refreshTable()
 
 
@@ -142,7 +170,7 @@ update_btn = tb.Button(root, text="Update", width=20, bootstyle="info")
 update_btn.grid(row=4, column=5, columnspan=1, rowspan=2)
 
 delete_btn = tb.Button(root, text="Delete", width=20,
-                       bootstyle="danger")
+                       bootstyle="danger", command=delete)
 delete_btn.grid(row=5, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
 
 search_btn = tb.Button(root, text="Search", width=20,
