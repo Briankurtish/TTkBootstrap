@@ -32,6 +32,29 @@ root.title("Student Registeration System")
 root.geometry("1200x720")
 
 
+# Placeholders for entry
+ph1 = StringVar()
+ph2 = StringVar()
+ph3 = StringVar()
+ph4 = StringVar()
+ph5 = StringVar()
+
+# set placeholder values
+
+
+def setph(word, num):
+    if num == 1:
+        ph1.set(word)
+    if num == 2:
+        ph2.set(word)
+    if num == 3:
+        ph3.set(word)
+    if num == 4:
+        ph4.set(word)
+    if num == 5:
+        ph5.set(word)
+
+
 # Functions
 
 
@@ -115,6 +138,47 @@ def delete():
     refreshTable()
 
 
+def select():
+
+    try:
+        selected_item = record_table.selection()[0]
+        studid = str(record_table.item(selected_item)['values'][0])
+        fname = str(record_table.item(selected_item)['values'][1])
+        lname = str(record_table.item(selected_item)['values'][2])
+        address = str(record_table.item(selected_item)['values'][3])
+        phone = str(record_table.item(selected_item)['values'][4])
+
+        setph(studid, 1)
+        setph(fname, 2)
+        setph(lname, 3)
+        setph(address, 4)
+        setph(phone, 5)
+
+    except:
+        messagebox.showinfo("Error", "Please Select a Data Row")
+
+
+def search():
+    studid = str(studidEntry.get())
+    fname = str(fnameEntry.get())
+    lname = str(lnameEntry.get())
+    address = str(addressEntry.get())
+    phone = str(phoneEntry.get())
+
+    conn = connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM students WHERE STUDID= '" +
+                   studid+"' or FNAME='" + fname+"' or LNAME= '" + lname+"' or ADDRESS= '" + address+"' or PHONE='" + phone + "'")
+    try:
+        results = cursor.fetchall()
+        for num in range(0, 5):
+            setph(results[0][num], (num+1))
+        conn.commit()
+        conn.close()
+    except:
+        messagebox.showinfo("Error", "No Data Found")
+
+
 # Labels
 label = tb.Label(root, text="Student Registration System",
                  font=("Arial Bold", 30), bootstyle='primary')
@@ -137,19 +201,19 @@ phoneLabel.grid(row=7, column=0, columnspan=1, padx=50, pady=5)
 
 
 # entries
-studidEntry = tb.Entry(root, width=55, bootstyle='info')
+studidEntry = tb.Entry(root, width=55, bootstyle='info', textvariable=ph1)
 studidEntry.grid(row=3, column=1, columnspan=4, padx=5, pady=0)
 
-fnameEntry = tb.Entry(root, width=55, bootstyle='info')
+fnameEntry = tb.Entry(root, width=55, bootstyle='info', textvariable=ph2)
 fnameEntry.grid(row=4, column=1, columnspan=4, padx=5, pady=0)
 
-lnameEntry = tb.Entry(root, width=55, bootstyle='info')
+lnameEntry = tb.Entry(root, width=55, bootstyle='info', textvariable=ph3)
 lnameEntry.grid(row=5, column=1, columnspan=4, padx=5, pady=0)
 
-addressEntry = tb.Entry(root, width=55, bootstyle='info')
+addressEntry = tb.Entry(root, width=55, bootstyle='info', textvariable=ph4)
 addressEntry.grid(row=6, column=1, columnspan=4, padx=5, pady=0)
 
-phoneEntry = tb.Entry(root, width=55, bootstyle='info')
+phoneEntry = tb.Entry(root, width=55, bootstyle='info', textvariable=ph5)
 phoneEntry.grid(row=7, column=1, columnspan=4, padx=5, pady=0)
 
 # style
@@ -174,7 +238,7 @@ delete_btn = tb.Button(root, text="Delete", width=20,
 delete_btn.grid(row=5, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
 
 search_btn = tb.Button(root, text="Search", width=20,
-                       bootstyle="primary")
+                       bootstyle="primary", command=search)
 search_btn.grid(row=6, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
 
 reset_btn = tb.Button(root, text="Reset", width=20,
@@ -182,7 +246,7 @@ reset_btn = tb.Button(root, text="Reset", width=20,
 reset_btn.grid(row=7, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
 
 select_btn = tb.Button(root, text="Select", width=20,
-                       bootstyle="secondary")
+                       bootstyle="secondary", command=select)
 select_btn.grid(row=8, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
 
 
