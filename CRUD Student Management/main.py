@@ -13,7 +13,7 @@ from tkinter import messagebox
 root = tb.Window(themename="darkly")
 root.title("Student Registeration System")
 root.geometry("1080x720")
-mt_tree = ttk.Treeview(root)
+my_tree = ttk.Treeview(root)
 
 # Functions
 
@@ -55,7 +55,8 @@ phoneEntry = tb.Entry(root, width=55)
 phoneEntry.grid(row=7, column=1, columnspan=4, padx=5, pady=0)
 
 # style
-
+style = ttk.Style()
+style.configure("Treeview.Heading", font=("Arial Bold", 25))
 
 # Buttons
 
@@ -80,5 +81,22 @@ reset_btn.grid(row=7, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
 select_btn = tb.Button(root, text="Select", width=20,
                        bootstyle="secondary outline")
 select_btn.grid(row=8, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
+
+
+my_tree['columns'] = ("Stud ID", "FirstName", "LastName", "Address", "Phone")
+
+my_tree.column("#0", width=0, stretch=NO)
+my_tree.column("Stud ID", anchor=W, width=170)
+my_tree.column("FirstName", anchor=W, width=150)
+my_tree.column("LastName", anchor=W, width=150)
+my_tree.column("Address", anchor=W, width=165)
+my_tree.column("Phone", anchor=W, width=170)
+
+my_tree.heading("Stud ID", text="Student ID", anchor=W)
+my_tree.heading("FirstName", text="FirstName", anchor=W)
+my_tree.heading("LastName", text="LastName", anchor=W)
+my_tree.heading("Address", text="Adress", anchor=W)
+my_tree.heading("Phone", text="Phone", anchor=W)
+
 
 root.mainloop()
