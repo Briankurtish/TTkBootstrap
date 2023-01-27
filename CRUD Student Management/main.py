@@ -13,13 +13,62 @@ def connection():
     return conn
 
 
+def refreshTable():
+    for data in record_table.get_children():
+        record_table.delete(data)
+
+    for array in read():
+        record_table.insert(parent='', index='end', iid=array,
+                            text="", values=(array), tag="orow")
+        record_table.tag_configure(
+            'orow', background='#EEEEEE', font=("Arial", 12))
+        record_table.grid(row=8, column=0, columnspan=5,
+                          rowspan=11, padx=10, pady=20)
+
+
 # GUI
 root = tb.Window(themename="darkly")
 root.title("Student Registeration System")
 root.geometry("1080x720")
-my_tree = ttk.Treeview(root)
+
 
 # Functions
+
+
+def read():
+    conn = connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM students")
+    results = cursor.fetchall()
+    conn.commit()
+    conn.close()
+    return results
+
+
+def add():
+    studid = str(studidEntry.get())
+    fname = str(fnameEntry.get())
+    lname = str(lnameEntry.get())
+    address = str(addressEntry.get())
+    phone = str(phoneEntry.get())
+
+    if (studid == "" or studid == " ") or (fname == "" or fname == " ") or (lname == "" or lname == " ") or (address == "" or address == " ") or (phone == "" or phone == " "):
+        messagebox.showinfo("Error", "Please fill up the blank entry")
+        return
+    else:
+        try:
+            conn = connection()
+            cursor = conn.cursor()
+            cursor.execute("INSERT INTO students VALUES ('"+studid +
+                           "','"+fname+"','"+lname+"','"+address+"','"+phone+"') ")
+            conn.commit()
+            conn.close()
+        except:
+            messagebox.showinfo("Error", "Stud ID already exist")
+            return
+
+    refreshTable()
+
 
 # Labels
 label = tb.Label(root, text="Student Registration System",
@@ -64,7 +113,8 @@ style.configure("Treeview.Heading", font=("Arial Bold", 25))
 
 # Buttons
 
-add_btn = tb.Button(root, text="Add", width=20, style="success outline")
+add_btn = tb.Button(root, text="Add", width=20,
+                    style="success outline", command=add)
 add_btn.grid(row=3, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
 
 update_btn = tb.Button(root, text="Update", width=20, bootstyle="info outline")
@@ -87,20 +137,25 @@ select_btn = tb.Button(root, text="Select", width=20,
 select_btn.grid(row=8, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
 
 
-my_tree['columns'] = ("Stud ID", "FirstName", "LastName", "Address", "Phone")
+record_table = ttk.Treeview(root)
 
-my_tree.column("#0", width=0, stretch=NO)
-my_tree.column("Stud ID", anchor=W, width=170)
-my_tree.column("FirstName", anchor=W, width=150)
-my_tree.column("LastName", anchor=W, width=150)
-my_tree.column("Address", anchor=W, width=165)
-my_tree.column("Phone", anchor=W, width=170)
 
-my_tree.heading("Stud ID", text="Student ID", anchor=W)
-my_tree.heading("FirstName", text="FirstName", anchor=W)
-my_tree.heading("LastName", text="LastName", anchor=W)
-my_tree.heading("Address", text="Adress", anchor=W)
-my_tree.heading("Phone", text="Phone", anchor=W)
+record_table["column"] = ['Stud ID',
+                          "FirstName", "LastName", "Address", "Phone"]
+record_table.column('#0', width=0, stretch=NO)
+record_table.column("Stud ID", anchor=W, width=170)
+record_table.column("FirstName", anchor=W, width=150)
+record_table.column("LastName", anchor=W, width=150)
+record_table.column("Address", anchor=W, width=165)
+record_table.column("Phone", anchor=W, width=170)
 
+record_table.heading("Stud ID", text="Student ID", anchor=W)
+record_table.heading("FirstName", text="FirstName", anchor=W)
+record_table.heading("LastName", text="LastName", anchor=W)
+record_table.heading("Address", text="Adress", anchor=W)
+record_table.heading("Phone", text="Phone", anchor=W)
+
+
+refreshTable()
 
 root.mainloop()
