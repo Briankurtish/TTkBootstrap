@@ -6,10 +6,14 @@ from tkinter import messagebox
 
 
 # connection to database
+def connection():
+    conn = pymysql.connect(
+        host='localhost', user='root', password='', db='student_db'
+    )
+    return conn
 
 
 # GUI
-
 root = tb.Window(themename="darkly")
 root.title("Student Registeration System")
 root.geometry("1080x720")
