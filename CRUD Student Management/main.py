@@ -54,5 +54,31 @@ addressEntry.grid(row=6, column=1, columnspan=4, padx=5, pady=0)
 phoneEntry = tb.Entry(root, width=55)
 phoneEntry.grid(row=7, column=1, columnspan=4, padx=5, pady=0)
 
+# style
+
+
+# Buttons
+
+add_btn = tb.Button(root, text="Add", width=20, style="success outline")
+add_btn.grid(row=3, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
+
+update_btn = tb.Button(root, text="Update", width=20, bootstyle="info outline")
+update_btn.grid(row=4, column=5, columnspan=1, rowspan=2)
+
+delete_btn = tb.Button(root, text="Delete", width=20,
+                       bootstyle="danger outline")
+delete_btn.grid(row=5, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
+
+search_btn = tb.Button(root, text="Search", width=20,
+                       bootstyle="primary outline")
+search_btn.grid(row=6, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
+
+reset_btn = tb.Button(root, text="Reset", width=20,
+                      bootstyle="warning outline")
+reset_btn.grid(row=7, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
+
+select_btn = tb.Button(root, text="Select", width=20,
+                       bootstyle="secondary outline")
+select_btn.grid(row=8, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
 
 root.mainloop()
