@@ -70,6 +70,23 @@ def add():
     refreshTable()
 
 
+def reset():
+    decision = messagebox.askquestion("Warning!", "Delete all Data?")
+    if decision != 'yes':
+        return
+    else:
+        try:
+            conn = connection()
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM students")
+            conn.commit()
+            conn.close()
+        except:
+            messagebox.showinfo("Error", "Sorry an error occured")
+            return
+    refreshTable()
+
+
 # Labels
 label = tb.Label(root, text="Student Registration System",
                  font=("Arial Bold", 30), bootstyle='primary')
@@ -133,7 +150,7 @@ search_btn = tb.Button(root, text="Search", width=20,
 search_btn.grid(row=6, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
 
 reset_btn = tb.Button(root, text="Reset", width=20,
-                      bootstyle="warning")
+                      bootstyle="warning", command=reset)
 reset_btn.grid(row=7, column=5, columnspan=1, rowspan=2, padx=90, pady=25)
 
 select_btn = tb.Button(root, text="Select", width=20,
